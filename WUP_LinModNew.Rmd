@@ -94,18 +94,28 @@ data2 = lm(SIMS~GRIP,data=data)
 abline(data2)
 ```
 
+
+Just as in the former case, there seems to be an uphill trend to the right, indicative of a positive linear correlation. However, GRIP has a smaller correlation with SIMS then with SIMS vs ARM.
+
 ### Numerical results 
 
 ```{r}
 cor(SIMS~GRIP,data=data)
 ```
 
+Here the correlation of SIMS and GRIP is 0.6398 which is a bit smaller than the correlation of SIMS and ARM.
+
 ### Inferential  (Build model.2)
 
+
 ```{r}
-summary(data2)
-newdata =c(SIMS=94, GRIP=88)
-```
+model.2 <- lm(SIMS~GRIP,data=data)
+summary.lm(model.2)
+``` 
+
+Our adjusted R-squared is 0.4053, which indicates that GRIP explains less than half of the variation of the SIMS data. It reduces the error of the mean model by 40.53%. The residual standard error was calculated at 1.295, which is equal to the standard deviation. This means the bond width is 1.295 * 4, or 5.18. Because the bond width is so narrow, it can be used to predict SIMS. But because it is greater than the previous example with ARM, it is less accurate in its predictions.
+
+
 
 #### predict model.2 at target point
 

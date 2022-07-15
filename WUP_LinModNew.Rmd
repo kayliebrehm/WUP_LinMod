@@ -31,53 +31,124 @@ data <- read.csv(file="https://onlinestatbook.com/case_studies_rvls/physical_str
 
 ```
 
-## Model 1 SIM~ARMS
+# Model 1 SIM~ARMS
+
+
 
 ### scatterplot
 
+```{r}
+plot(SIMS~ARM,data=data)
+data1 = lm(SIMS~ARM,data=data)
+abline(data1)
+```
+
+
 ### Numerical results
 
+```{r}
+cor(SIMS~ARM,data=data)
+```
 
 ### Inferential  (Build model.1)
 
+```{r}
+summary(data1)
+newdata =c(SIMS=94, ARM=88)
+```
+
 #### Predict at target point
+
+```{r}
+predictSIM=predict.lm(data1, newdata=data.frame(SIMS=94, ARM=88))
+print(predictSIM)
+```
 
 
 #### scatterplot with model fit
   
+```{r}
+plot(data1)
+```
+  
+  
 
-## Model 2 SIM~GRIP
+
+# Model 2 SIM~GRIP
 
 ### Now add in scatterplot
 
+```{r}
+plot(SIMS~GRIP,data=data)
+data2 = lm(SIMS~GRIP,data=data)
+abline(data2)
+```
 
 ### Numerical results 
 
+```{r}
+cor(SIMS~GRIP,data=data)
+```
 
 ### Inferential  (Build model.2)
-  
+
+```{r}
+summary(data2)
+newdata =c(SIMS=94, GRIP=88)
+```
 
 #### predict model.2 at target point
 
+```{r}
+predictSIM2=predict.lm(data2, newdata=data.frame(SIMS=94, GRIP=88))
+print(predictSIM2)
+```
+
 #### now add the model fit to our plot for model.2
   
+```{r}
+plot(data2)
+```
 
-
-## Model 3 SIM~ARM+GRIP
+# Model 3 SIM~ARM+GRIP
 
 ### Numerical results (cor)
 
-`
+```{r}
+data3=lm(SIMS~ARM+GRIP, data=data)
+summary(data3)
+```
   
 ### Inferential  (Build 2-dimentional model.3)
 
+```{r}
+model.2 <- lm(SIMS~ARM + GRIP,data=data)
+summary.lm(model.2)
+newdata =c(SIMS=94, ARM=88)
+newdata =c(SIMS=94, GRIP=88)
+``` 
+
 #### predict model.3 at target point
+  
+```{r}
+predict.lm(data3, newdata=data.frame(GRIP=94, ARM=88))
+```
   
 
 ## Comparing nested models ANOVA Test
 
 ### Model.1 vs Model.3
+
+```{r}
+anova(data1, data3)
+```
+
+
 ### Model.2 vs Model.3
+
+```{r}
+anova(data2, data3)
+```
 
 ## Informally compare Model.1 with model.2
 

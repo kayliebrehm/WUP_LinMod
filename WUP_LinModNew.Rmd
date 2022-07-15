@@ -186,4 +186,4 @@ Here model 3 is shown to be better than model 2 as it shows that the error in th
 
 ## Informally compare Model.1 with model.2
 
-While no P-values are available, since they are nested models, you can still informally compare them. The amount of error between Model 1 and 2 is 25.19. This indicates that ARM better explains SIMS than GRIP, since it has a noticeably lesser amount of error. Model 3 is a better model than model 2 as evidence of RSS values of 243.07 vs 188.43. 
+While no P-values are available, since they are nested models, you can still informally compare them. The amount of error between Model 1 and 2 is 25.19. This indicates that ARM better explains SIMS than GRIP, since it has a noticeably lesser amount of error. Model 1 is a better model than model 2 as evidence of RSS values of 243.07 vs 188.43. 

@@ -43,12 +43,15 @@ data1 = lm(SIMS~ARM,data=data)
 abline(data1)
 ```
 
+If you were to draw a straight line through the points, you would see that it is increasing and moving towards the right. So its a positive linear correlation correlation. The standard deviation is around 1 because it is a moderately tight scatterplot, with a relatively consistent bond width of about 4.
 
 ### Numerical results
 
 ```{r}
 cor(SIMS~ARM,data=data)
 ```
+
+The correlation is 0.6860073, which is fairly well coordinated.
 
 ### Inferential  (Build model.1)
 
@@ -57,6 +60,12 @@ summary(data1)
 newdata =c(SIMS=94, ARM=88)
 ```
 
+The equation of the line is:   
+SIMS = m * ARMS + b   
+SIMS = 0.054563 * ARMS - 4.095160   
+
+Our adjusted R-squared is 0.467, which indicates that ARM explains under half of the variation of the SIMS data. In other words, it reduces the error of the mean model by 46.7%. The residual standard error was calculated at 1.226, so the standard deviation is 1.226. This means that the bond width is 4.904, which is decently narrow. This indicates that ARMS can likely be used to predict SIMS.
+
 #### Predict at target point
 
 ```{r}
@@ -64,6 +73,7 @@ predictSIM=predict.lm(data1, newdata=data.frame(SIMS=94, ARM=88))
 print(predictSIM)
 ```
 
+The prediction is about 0.71 for an ARM value of 88.
 
 #### scatterplot with model fit
   
@@ -72,7 +82,7 @@ plot(data1)
 ```
   
   
-
+At any point above the line is a normal curve with a standard deviation of 1.226.
 
 # Model 2 SIM~GRIP
 
